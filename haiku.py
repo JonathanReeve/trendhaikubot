@@ -1,6 +1,7 @@
 
 import twitter
 import private
+import poet0
 
 # Set access variables from private.py
 api = twitter.Api(consumer_key=private.consumer_key,
@@ -19,11 +20,13 @@ for t in trends:
 
 # Get list of top tweets for top trend
 result = api.GetSearch(term=trends[0].name, count=100)
-print "Result size is: " + str(len(result)) 
-print "Tweets # (length) for top trend: " 
+print "\nResult size is: " + str(len(result)) 
+print "\nTweets # (length) for top trend: \n" 
 i=1
 for r in result: 
-    print "Tweet " + str(i) + " (" + str(len(r.text)) + "): " + r.text + "\n"
+    print "Tweet " + str(i) + " (" + str(len(r.text)) + "): " + r.text.encode('utf-8') + "\n"
     i=i+1
 
+# Construct Haikus
+poet0.writehaiku(trends[0].name, result)
 
