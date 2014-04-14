@@ -13,6 +13,8 @@ for t in trends:
 
 result = api.GetSearch(term=trends[0].name, count=100)
 print "Result size is: " + str(len(result)) 
-print "Tweets for top trend: " 
+print "Length of tweets for top trend: " 
+i=1
 for r in result: 
-    print r.text
+    print "Tweet " + str(i) + " (" + str(len(r.text)) + "): " + r.text + "\n"
+    i=i+1
