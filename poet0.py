@@ -48,37 +48,32 @@ def writehaiku(trend, tweets):
 
     filteredWords = [word for word in allWords if word not in invalidWords] 
 
-    print "Filtered wordlist is now: "
-    print filteredWords
+    #print "Filtered wordlist is now: "
+    #print filteredWords
 
     # Get the list of unique words with their counts
     uniqueWords = Counter(filteredWords)
 
-	# Get the most common 5 words
-	topWords = uniqueWords.most_common(5)
-
-	# For top common filtered words, get phrases of length 5 containing them
-	phrases = []
-	n = 5
-	for word in topWords:
-		idx = n-1
-		try:
-			while allWords[idx:len(allWords)-n].index(word[0])>=0:
-				idx = allWords[idx:len(allWords)-n].index(word[0]) + idx
-				for i in range(0,n):
-				    phrases.append(" ".join(allWords[(idx - i):(idx - i + n)]))
-				idx += 1
-		except:
-			idx = 0
-
-
-	uniquePhrases = Counter(phrases)
-	print uniquePhrases.most_common(20)
-
     # Get the most common 5 words
-    mostCommon = uniqueWords.most_common(100)
-    print "Most common words are: "
-    print mostCommon
+    topWords = uniqueWords.most_common(5)
+
+    # For top common filtered words, get phrases of length 5 containing them
+    phrases = []
+    n = 5
+    for word in topWords:
+        idx = n-1
+        try:
+            while allWords[idx:len(allWords)-n].index(word[0])>=0:
+                idx = allWords[idx:len(allWords)-n].index(word[0]) + idx
+                for i in range(0,n):
+                    phrases.append(" ".join(allWords[(idx - i):(idx - i + n)]))
+                idx += 1
+        except:
+            idx = 0
+
+
+    uniquePhrases = Counter(phrases)
+    print uniquePhrases.most_common(20)
 
     # Compute the syllable length for each phrase
 
