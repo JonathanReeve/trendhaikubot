@@ -14,13 +14,30 @@ def writehaiku(trend, tweets):
 
 	# Filter the word list (url, RT, @*, length >= 5)
 
+
 	# Get the list of unique words with their counts
 	uniqueWords = Counter(allWords)
 
 	# Get the most common 5 words
-	print uniqueWords.most_common(30)
+	topWords = uniqueWords.most_common(5)
 
 	# For top common filtered words, get phrases of length 5 containing them
+	phrases = []
+	n = 5
+	for word in topWords:
+		idx = n-1
+		try:
+			while allWords[idx:len(allWords)-n].index(word[0])>=0:
+				idx = allWords[idx:len(allWords)-n].index(word[0]) + idx
+				for i in range(0,n):
+				    phrases.append(" ".join(allWords[(idx - i):(idx - i + n)]))
+				idx += 1
+		except:
+			idx = 0
+
+
+	uniquePhrases = Counter(phrases)
+	print uniquePhrases.most_common(20)
 
 	# Compute the syllable length for each phrase
 
