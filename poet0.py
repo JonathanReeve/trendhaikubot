@@ -1,6 +1,7 @@
 
 from collections import Counter
 import re
+import logging
 
 # Stolen from http://stackoverflow.com/a/7995979/584121 
 # Checks whether a word is a URL
@@ -48,8 +49,8 @@ def writehaiku(trend, tweets):
 
     filteredWords = [word for word in allWords if word not in invalidWords] 
 
-    #print "Filtered wordlist is now: "
-    #print filteredWords
+    #logging.debug("Filtered wordlist is now: ") 
+    #logging.debug(filteredWords) 
 
     # Get the list of unique words with their counts
     uniqueWords = Counter(filteredWords)
