@@ -2,6 +2,7 @@
 import twitter
 import private
 import poet0
+import supportFunctions
 
 # Set access variables from private.py
 api = twitter.Api(consumer_key=private.consumer_key,
