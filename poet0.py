@@ -2,6 +2,9 @@
 from collections import Counter
 import re
 import supportFunctions as sf
+import logging
+
+
 
 def writehaiku(trend, tweets):
 
@@ -27,8 +30,8 @@ def writehaiku(trend, tweets):
 
     filteredWords = [word for word in allWords if word not in invalidWords] 
 
-    #print "Filtered wordlist is now: "
-    #print filteredWords
+    #logging.debug("Filtered wordlist is now: ") 
+    #logging.debug(filteredWords) 
 
     # Get the list of unique words with their counts
     uniqueWords = Counter(filteredWords)
