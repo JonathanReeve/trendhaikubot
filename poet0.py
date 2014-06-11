@@ -3,7 +3,7 @@ from collections import Counter
 import re
 import supportFunctions as sf
 import logging
-
+import haiku as h
 
 
 def writehaiku(trend, tweets):
@@ -77,10 +77,12 @@ def writehaiku(trend, tweets):
             if Phrase2 == '':
                 Phrase2 = phrase[0]
 
+    myHaiku = h.Haiku()
 
     # Construct the haiku
     if Phrase1 != '' and Phrase2 != '' and Phrase3 != '':
-        return [[Phrase1, Phrase2, Phrase3], len(Phrase1) + len(Phrase2) + len(Phrase3)]
-    else:
-        return[[],0]
+        myHaiku.length = len(Phrase1) + len(Phrase2) + len(Phrase3)
+        myHaiku.text = [Phrase1, Phrase2, Phrase3]
+        #return [[Phrase1, Phrase2, Phrase3], len(Phrase1) + len(Phrase2) + len(Phrase3)]
 
+    return myHaiku

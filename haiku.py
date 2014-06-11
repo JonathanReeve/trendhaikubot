@@ -1,6 +1,6 @@
 
 
 class Haiku:
-    length = 0
-    text = ['','','']
-
+    def __init__(self):
+        self.length = 0
+        self.text = []

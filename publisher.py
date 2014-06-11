@@ -33,6 +33,6 @@ for trend in trends:
     #     i=i+1
 
     # Construct Haikus
-    print "Poet0: " + str(poet0.writehaiku(trend.name, result))
+    print "Poet0: " + str(poet0.writehaiku(trend.name, result)[0])
     print "\n"
 
