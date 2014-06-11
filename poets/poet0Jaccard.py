@@ -67,18 +67,28 @@ def writehaiku(trend, tweets):
     Phrase2 = ''
     Phrase3 = ''
 
-    # Populate first phrase first with the top-tweeted phrase of five syllables
+    # Populate 7-syllable phrase first with the top-tweeted phrase of five syllables
     for phrase in listPhrases:
-        if phrase[2] == 5 and Phrase1 == '':
-            Phrase1 = phrase[2]
+        if phrase[2] == 7 and Phrase1 == '':
+            Phrase2 = phrase[0]
             break
 
-    # Get list of 7-syllable phrases and compute their Jaccard similarities from the first
+
+    # Get list of 5-syllable phrases and compute their Jaccard similarities from the 2nd
     # Choose the one that is popular with smaller Jaccard similarity
-    for phrase in listPhrases:
-        if phrase[2] == 7:
-            phrase.append(d.jaccard(Phrase1, phrase[2]))
-            print str(phrase)
+    if Phrase2 != '':
+        for phrase in listPhrases:
+            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .5:
+                if Phrase1 == '':
+                    Phrase1 = phrase[0]
+
+    # Get list of 5-syllable phrases and compute their Jaccard similarities from the 1st and 2nd
+    # Choose the one that is popular with smaller Jaccard similarity
+    if Phrase2 != '' and Phrase1 != '':
+        for phrase in listPhrases:
+            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .5 and d.jaccard(Phrase1, phrase[0]) >= .5:
+                if Phrase3 == '':
+                    Phrase3 = phrase[0]
 
 
     myHaiku = h.Haiku()
