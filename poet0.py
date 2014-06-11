@@ -81,10 +81,6 @@ def writehaiku(trend, tweets):
     # Construct the haiku
     if Phrase1 != '' and Phrase2 != '' and Phrase3 != '':
         return [[Phrase1, Phrase2, Phrase3], len(Phrase1) + len(Phrase2) + len(Phrase3)]
-        # print Phrase1
-        # print Phrase2
-        # print Phrase3
-        # print "length:" + str(len(Phrase1) + len(Phrase2) + len(Phrase3)) + "\n\n"
     else:
         return[[],0]
-        #print "Failed.\n\n"
+
