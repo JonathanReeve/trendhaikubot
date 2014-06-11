@@ -23,7 +23,7 @@ trends = api.GetTrendsWoeid(woeid)
 for trend in trends:
     result = api.GetSearch(term=trend.name, count=300)
 
-    print "Haikus for trend: " + trend.name + "\n"
+    print "Haikus for trend: " + trend.name
 
     # print "\nResult size is: " + str(len(result)) 
     # print "\nTweets # (length) for top trend: \n" 
@@ -33,5 +33,6 @@ for trend in trends:
     #     i=i+1
 
     # Construct Haikus
-    poet0.writehaiku(trend.name, result)
+    print "Poet0: " + str(poet0.writehaiku(trend.name, result))
+    print "\n"
 

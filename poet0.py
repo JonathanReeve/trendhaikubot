@@ -9,7 +9,7 @@ import logging
 def writehaiku(trend, tweets):
 
     # Print preamble
-    print "Poet0: "
+    #print "Poet0: "
 
     # Create list of words in tweets
     allWords = []
@@ -80,9 +80,11 @@ def writehaiku(trend, tweets):
 
     # Construct the haiku
     if Phrase1 != '' and Phrase2 != '' and Phrase3 != '':
-        print Phrase1
-        print Phrase2
-        print Phrase3
-        print "length:" + str(len(Phrase1) + len(Phrase2) + len(Phrase3)) + "\n\n"
+        return [[Phrase1, Phrase2, Phrase3], len(Phrase1) + len(Phrase2) + len(Phrase3)]
+        # print Phrase1
+        # print Phrase2
+        # print Phrase3
+        # print "length:" + str(len(Phrase1) + len(Phrase2) + len(Phrase3)) + "\n\n"
     else:
-        print "Failed.\n\n"
+        return[[],0]
+        #print "Failed.\n\n"
