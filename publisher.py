@@ -2,6 +2,7 @@ import twitter
 import private
 import poets.poet0
 import poets.poet13
+import poets.poet0Jaccard
 
 # Set access variables from private.py
 api = twitter.Api(consumer_key=private.consumer_key,
@@ -34,6 +35,7 @@ for trend in trends:
 
     # Construct Haikus
     print "Poet0: " + str(poets.poet0.writehaiku(trend.name, result).text)
-    print "\n"
-
     print "Teenage poet: " + str(poets.poet13.writehaiku(trend.name, result))
+    print "Poet0Jaccard: " + str(poets.poet0Jaccard.writehaiku(trend.name, result).text)
+
+    print "\n"
