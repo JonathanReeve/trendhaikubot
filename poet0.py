@@ -9,7 +9,7 @@ import logging
 def writehaiku(trend, tweets):
 
     # Print preamble
-    print "Poet0 is busy writing a haiku for trend " + trend + "...\n"
+    print "Poet0: "
 
     # Create list of words in tweets
     allWords = []
@@ -36,31 +36,53 @@ def writehaiku(trend, tweets):
     # Get the list of unique words with their counts
     uniqueWords = Counter(filteredWords)
 
-    # Get the most common 5 words
+    # Get the most common words
     topWords = uniqueWords.most_common(5)
 
     # For top common filtered words, get phrases of length 5 containing them
     phrases = []
-    n = 5
-    for word in topWords:
-        idx = n-1
-        try:
-            while allWords[idx:len(allWords)-n].index(word[0])>=0:
-                idx = allWords[idx:len(allWords)-n].index(word[0]) + idx
-                for i in range(0,n):
-                    phrases.append(" ".join(allWords[(idx - i):(idx - i + n)]))
-                idx += 1
-        except:
-            idx = 0
-
+    for n in range(2,7):
+        for word in topWords:
+            idx = n-1
+            try:
+                while filteredWords[idx:len(filteredWords)-n].index(word[0])>=0:
+                    idx = filteredWords[idx:len(filteredWords)-n].index(word[0]) + idx
+                    for i in range(0,n):
+                        phrases.append(" ".join(filteredWords[(idx - i):(idx - i + n)]))
+                    idx += 1
+            except:
+                idx = 0
 
     uniquePhrases = Counter(phrases)
-    print uniquePhrases.most_common(20)
+    topPhrases = uniquePhrases.most_common(200)
 
     # Compute the syllable length for each phrase
-    
+    listPhrases = [list(phrase) for phrase in topPhrases]
+    for phrase in listPhrases:
+        phrase.append(sf.nsyllables(phrase[0]))
 
     # Select the two most commonly tweeted phrases with 5 syllables and the most commonly tweeted phrase with 7 syllables
+    Phrase1 = ''
+    Phrase2 = ''
+    Phrase3 = ''
+    for phrase in listPhrases:
+        if phrase[2] == 5:
+            if Phrase1 == '':
+                Phrase1 = phrase[0]
+            else:
+                if Phrase3 == '':
+                    Phrase3 = phrase[0]
+                    break
+        if phrase[2] == 7:
+            if Phrase2 == '':
+                Phrase2 = phrase[0]
+
 
     # Construct the haiku
-
+    if Phrase1 != '' and Phrase2 != '' and Phrase3 != '':
+        print Phrase1
+        print Phrase2
+        print Phrase3
+        print "length:" + str(len(Phrase1) + len(Phrase2) + len(Phrase3)) + "\n\n"
+    else:
+        print "Failed.\n\n"
