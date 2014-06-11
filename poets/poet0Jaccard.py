@@ -6,7 +6,6 @@ import logging
 import haiku as h
 import distance as d
 
-
 def writehaiku(trend, tweets):
 
     # Print preamble
@@ -78,7 +77,7 @@ def writehaiku(trend, tweets):
     # Choose the one that is popular with smaller Jaccard similarity
     if Phrase2 != '':
         for phrase in listPhrases:
-            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .5:
+            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .6:
                 if Phrase1 == '':
                     Phrase1 = phrase[0]
 
@@ -86,7 +85,7 @@ def writehaiku(trend, tweets):
     # Choose the one that is popular with smaller Jaccard similarity
     if Phrase2 != '' and Phrase1 != '':
         for phrase in listPhrases:
-            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .5 and d.jaccard(Phrase1, phrase[0]) >= .5:
+            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .6 and d.jaccard(Phrase1, phrase[0]) >= .6:
                 if Phrase3 == '':
                     Phrase3 = phrase[0]
 
