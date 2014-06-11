@@ -34,6 +34,6 @@ for trend in trends:
 
     # Construct Haikus
     print "Poet0: " + str(poets.poet0.writehaiku(trend.name, result).text)
-    print "\n"
-
     print "Teenage poet: " + str(poets.poet13.writehaiku(trend.name, result))
+
+    print "\n"

@@ -73,7 +73,12 @@ def writehaiku(trend, tweets):
             Phrase1 = phrase[2]
             break
 
-    # Get list of 7-syllable phrases and compute their similarities
+    # Get list of 7-syllable phrases and compute their Jaccard similarities from the first
+    # Choose the one that is popular with smaller Jaccard similarity
+    for phrase in listPhrases:
+        if phrase[2] == 7:
+            phrase.append(d.jaccard(Phrase1, phrase[2]))
+            print str(phrase)
 
 
     myHaiku = h.Haiku()
