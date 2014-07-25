@@ -77,7 +77,7 @@ def writehaiku(trend, tweets):
     # Choose the one that is popular with smaller Jaccard similarity
     if Phrase2 != '':
         for phrase in listPhrases:
-            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .6:
+            if phrase[2] == 5 and d.jaccard(Phrase2, phrase[0]) >= .4:
                 if Phrase1 == '':
                     Phrase1 = phrase[0]
 
